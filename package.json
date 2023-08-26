@@ -1,0 +1,46 @@
+{
+  "name": "em-review-rating-api",
+  "version": "1.0.0",
+  "description": "Event Management Rating API",
+  "main": "./server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiaqatSaeed/em-review-rating-api.git"
+  },
+  "keywords": [
+    "Event",
+    "Management",
+    "API",
+    "Node",
+    "Express"
+  ],
+  "author": "Liaqat Saeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiaqatSaeed/em-review-rating-api/issues"
+  },
+  "homepage": "https://github.com/LiaqatSaeed/em-review-rating-api#readme",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.5",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "dotenv": "^16.3.1",
+    "lodash": "^4.17.21"
+  }
+}
