@@ -1,0 +1,15 @@
+{
+  "dbConnected": "Database connected successfully",
+  "dbConnectionError": "Error connecting to database: ",
+  "userAlreadyExist": "User Already exist!",
+  "serverError": "500 Internal Server Error",
+  "registeredSuccess": "User registered successfully",
+  "errorRegistering": "Error registering user",
+  "loginSuccess": "Login successfully",
+  "invalidCredentials": "Invalid credentials",
+  "loginError": "Error loggin in",
+  "noToken": "No token provided",
+  "tokenVerifyFailed": "Token verification failed",
+  "required": "Required",
+  "taken":"Taken"
+}
