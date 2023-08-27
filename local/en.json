@@ -11,5 +11,13 @@
   "noToken": "No token provided",
   "tokenVerifyFailed": "Token verification failed",
   "required": "Required",
-  "taken":"Taken"
+  "taken": "Taken",
+  "userNotFound": "User not found",
+  "passwordReset": "Password Reset",
+  "emailSendingError": "Error sending email:",
+  "passwordResetEmailSent": "Password reset email sent",
+  "errorProcessingReq": "Error processing request",
+  "emailSent": "Email sent:",
+  "invalidOrExpired": "Invalid or expired token",
+  "passResetSuccess": "Password reset successful"
 }
