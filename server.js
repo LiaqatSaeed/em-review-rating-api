@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import { dbConnect } from "./middlewares";
-import dotenv from "dotenv";
 import { authController, userController } from "./controllers";
+import dotenv from "dotenv";
 dotenv.config();
 
 const { PORT } = process.env;

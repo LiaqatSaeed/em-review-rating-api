@@ -10,6 +10,8 @@ const userSchema = new mongoose.Schema({
     unique: [true, local.taken],
     match: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
   },
+  resetToken: {type: String}, 
+  resetTokenExpires: {type: Date},
   name: {type: String, require: [true, local.required]},
   password: {type: String, require: [true, local.taken]}
 });

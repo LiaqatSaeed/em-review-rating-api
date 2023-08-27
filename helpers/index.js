@@ -1,0 +1,1 @@
+export {transporter} from "./nodeMailerConfig";
