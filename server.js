@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 import path from "path";
 import { dbConnect } from "./middlewares";
 import { authController, userController } from "./controllers";
@@ -10,6 +11,7 @@ const { PORT } = process.env;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
 
 //Default Route

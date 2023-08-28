@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-const uuid = require('uuid'); 
+const uuid = require('uuid');
 import bcrypt from "bcrypt";
 import { User } from "../model";
 import { local } from "../local";
@@ -29,7 +29,15 @@ export const authController = (function () {
       const result = await user.save();
 
       if (result) {
-        res.status(201).json({ message: local.registeredSuccess });
+        const token = jwt.sign({ userId: result._id }, JWT_SECRET_KEY, {
+          expiresIn: "1h",
+        });
+
+        const { name } = result;
+
+        res
+          .status(201)
+          .json({ message: local.registeredSuccess, token, user: { name } });
       } else {
         res.status(500).json({ message: local.errorRegistering });
       }
@@ -58,7 +66,9 @@ export const authController = (function () {
         expiresIn: "1h",
       });
 
-      res.json({ token });
+      const { name } = user;
+
+      res.json({ token, user: { name } });
     } catch (error) {
       res.status(500).send({ error, message: local.serverError });
     }
@@ -82,7 +92,7 @@ export const authController = (function () {
 
       await user.save();
 
-      const resetLink = `https://your-app-url/reset-password?token=${resetToken}`;
+      const resetLink = `http://localhost:5174/reset-password?token=${resetToken}`;
 
       // email data
       const mailOptions = {
@@ -98,7 +108,6 @@ export const authController = (function () {
           console.error(local.emailSendingError, error);
           res.status(500).json({ message: local.emailSendingError });
         } else {
-          console.log( local.emailSent, info.response);
           res.json({ message: local.passwordResetEmailSent });
         }
       });
@@ -109,30 +118,30 @@ export const authController = (function () {
 
   router.post('/reset-password', async (req, res) => {
     const { resetToken, newPassword } = req.body;
-  
+
     try {
       const user = await User.findOne({
         resetToken,
         resetTokenExpires: { $gt: Date.now() } // Check if token is not expired
       });
-  
+
       if (!user) {
         return res.status(400).json({ message: local.invalidOrExpired });
       }
-  
+
       // Reset the user's password and remove the reset token
       user.password = newPassword;
       user.resetToken = undefined;
       user.resetTokenExpires = undefined;
-  
+
       await user.save();
-  
+
       res.json({ message: local.passResetSuccess });
     } catch (error) {
       res.status(500).json({ message: local.errorProcessingReq });
     }
   });
-  
+
 
   return router;
 })();
